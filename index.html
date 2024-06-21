@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Tailoring and Boutique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1497997092403-f091fcf5b6c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            /* background-image: url('https://images.unsplash.com/photo-1625479144604-ae69462778b7?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'); */
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .gallery-container {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        .gallery-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        }
+        .gallery-scroll::-webkit-scrollbar { 
+            display: none;  /* WebKit */
+        }
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 300px;
+            margin-right: 15px;
+            scroll-snap-align: start;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .gallery-nav.prev {
+            left: 10px;
+        }
+        .gallery-nav.next {
+            right: 10px;
+        }
+        .testimonial {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+        background-color: #1a1a1a;
+        padding: 15px 0;
+    }
+    .navbar-brand {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+        color: #fff;
+        font-weight: 500;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #ffd700;
+    }
+    .navbar-toggler {
+        border-color: #fff;
+    }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">ABC Tailoring</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container text-center text-white hero-content">
+            <h1 class="display-4">ABC Tailoring and Boutique</h1>
+            <p class="lead">Crafting elegance, one stitch at a time</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Book an Appointment</a>
+        </div>
+    </section>
+
+    <!-- About, Services, and Testimonials sections remain the same -->
+
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Gallery</h2>
+            <div class="gallery-container">
+                <div class="gallery-scroll">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Tailored Suit">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=783&q=80" alt="Bridal Dress">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519235106638-30cc49b5dbc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Casual Wear">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1552874869-5c39ec9288dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Evening Gown">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Traditional Wear">
+                    </div>
+                </div>
+                <button class="gallery-nav prev">&lt;</button>
+                <button class="gallery-nav next">&gt;</button>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Services</h2>
+            <div class="row">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="service-icon"><i class="fas fa-tshirt"></i></div>
+                    <h3>Custom Tailoring</h3>
+                    <p>Perfectly fitted garments for every occasion, from casual wear to formal attire.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="service-icon"><i class="fas fa-cut"></i></div>
+                    <h3>Alterations</h3>
+                    <p>Expert alterations to make your clothes fit just right, from simple hems to complex restructuring.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="service-icon"><i class="fas fa-female"></i></div>
+                    <h3>Bridal Wear</h3>
+                    <p>Stunning bridal and special occasion outfits, customized to make your big day unforgettable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">About Us</h2>
+            <p class="text-center">At ABC Tailoring and Boutique, we bring your fashion dreams to life. With over 20 years of experience, our skilled tailors combine traditional craftsmanship with modern designs to create stunning, perfectly fitted garments for every occasion.</p>
+            <p class="text-center">Whether you're looking for a bespoke suit, a wedding dress, or simply need alterations, our dedicated team is here to ensure you look and feel your best.</p>
+        </div>
+    </section>
+
+    
+
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Customer Feedback</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial">
+                        <p>"ABC Tailoring created the perfect wedding dress for me. Their attention to detail is amazing!"</p>
+                        <p class="font-italic">- Priya S.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial">
+                        <p>"I always come here for my suit alterations. They do an excellent job every time."</p>
+                        <p class="font-italic">- Rahul M.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial">
+                        <p>"The team at ABC Boutique is so creative. They designed a beautiful traditional outfit for my daughter's graduation."</p>
+                        <p class="font-italic">- Sneha K.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 ABC Tailoring and Boutique. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.querySelector('.gallery-scroll');
+            const prevBtn = document.querySelector('.gallery-nav.prev');
+            const nextBtn = document.querySelector('.gallery-nav.next');
+
+            prevBtn.addEventListener('click', () => {
+                gallery.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                gallery.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
